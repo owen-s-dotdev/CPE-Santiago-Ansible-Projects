@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: <your_hosts>
   become: true
   pre_tasks:
 
@@ -18,11 +18,11 @@
     when: ansible_distribution == "Ubuntu"
 
 - name: Install and Configure Nagios Core and Nagios Plugins
-  hosts: web_servers
+  hosts: <your_hosts>
   become: true
   vars:
-    nagiosadmin_password: "santiago_nagios"
-    nagios_user: nagiosadmin
+    nagiosadmin_password: "<your_password"
+    nagios_user: <your_username>
     web_server_service: "{{ 'apache2' if ansible_facts['os_family'] == 'Debian' else 'httpd' }}"
     web_server_user: "{{ 'www-data' if ansible_facts['os_family'] == 'Debian' else 'apache' }}"
 
